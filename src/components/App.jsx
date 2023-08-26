@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router';
 import { refresh } from 'store/auth/operations';
+import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,18 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute component={RegisterPage} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
+          }
+        />
         <Route path="/contacts" element={<ContactsPage />} />
       </Route>
       <Route path="*" element={<HomePage />} />
