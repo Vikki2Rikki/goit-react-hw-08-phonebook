@@ -13,3 +13,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* тимчасово */
+header section{
+  display: flex;
+  background-color: greenyellow;
+  justify-content: space-around;
+  align-items: center;
+  ;
+}
