@@ -3,7 +3,6 @@ import React from 'react';
 import { AppHeader } from './AppBar.styled';
 import UserMenu from 'components/UserMenu/UserMenu';
 import AuthNav from 'components/AuthNav/AuthNav';
-import { selectIsLoggedIn } from 'store/auth/selectors';
 import useAuth from 'hooks/useAuth';
 
 const AppBar = () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
 import { NaivgLink } from './Navigation.styled';
 import useAuth from 'hooks/useAuth';
 
@@ -14,20 +14,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-// export const Navigation = () => {
-//    const { isLoggedIn } = useAuth();
-
-//    return (
-//      <nav>
-//        <NavLink className={css.link} to="/">
-//          Home
-//        </NavLink>
-//        {isLoggedIn && (
-//          <NavLink className={css.link} to="/tasks">
-//            Tasks
-//          </NavLink>
-//        )}
-//      </nav>
-//    );
-//  };
