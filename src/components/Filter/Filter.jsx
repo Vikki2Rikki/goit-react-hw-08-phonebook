@@ -1,17 +1,20 @@
 import React from 'react';
-//import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'store/filter/filterSlice';
+import { FilterWrap, FilterLabel } from './Filter.styled';
 
 const Filter = () => {
-  //   const dispatch = useDispatch();
-  //   const inputFilter = e => {
-  //     const filterValue = e.target.value;
-  //  dispatch(setFilter(filterValue.toLowerCase()));
-  //};
+  const dispatch = useDispatch();
+
+  const inputFilter = e => {
+    const filterValue = e.target.value;
+    dispatch(setFilter(filterValue.toLowerCase()));
+  };
   return (
-    <div>
-      <h3>Find contacts by name</h3>
-      <input type="text" name="filter" />
-    </div>
+    <FilterWrap>
+      <FilterLabel>Find contacts by name</FilterLabel>
+      <input type="text" name="filter" onChange={inputFilter} />
+    </FilterWrap>
   );
 };
 

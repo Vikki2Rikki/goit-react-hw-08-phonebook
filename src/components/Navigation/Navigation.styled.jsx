@@ -5,6 +5,7 @@ export const NaivgLink = styled(NavLink)`
   display: inline-block;
   text-decoration: none;
   padding: 12px;
-  font-weight: 700;
-  color: #2a363b;
+  font-weight: 500;
+  color: yellow;
+  margin-left: 25px;
 `;

@@ -1,6 +1,12 @@
 //import React, { useState } from 'react';
 import { register } from 'store/auth/operations';
-import { WrapLoginForm, InputWrap, BtnSubmit } from './RegisterForm.styled';
+import {
+  WrapSignUpForm,
+  WrapForm,
+  InputWrap,
+  InputWrapper,
+  BtnSubmit,
+} from './RegisterForm.styled';
 import { useDispatch } from 'react-redux';
 
 const RegisterForm = () => {
@@ -21,11 +27,11 @@ const RegisterForm = () => {
   };
 
   return (
-    <WrapLoginForm>
-      <form onSubmit={handleSubmit}>
+    <WrapSignUpForm>
+      <WrapForm onSubmit={handleSubmit}>
         <InputWrap>
           <label htmlFor="exampleInputName">Name</label>
-          <input
+          <InputWrapper
             type="text"
             name="name"
             // pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -35,15 +41,15 @@ const RegisterForm = () => {
         </InputWrap>
         <InputWrap>
           <label htmlFor="exampleInputEmail">Email</label>
-          <input type="email" name="email" required />
+          <InputWrapper type="email" name="email" required />
         </InputWrap>
         <InputWrap>
           <label htmlFor="exampleInputPassword">Password</label>
-          <input type="password" name="password" required />
+          <InputWrapper type="password" name="password" required />
         </InputWrap>
         <BtnSubmit type="submit">SignUp</BtnSubmit>
-      </form>
-    </WrapLoginForm>
+      </WrapForm>
+    </WrapSignUpForm>
   );
 };
 export default RegisterForm;

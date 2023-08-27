@@ -1,5 +1,11 @@
 //import React from 'react';
-import { WrapLoginForm, InputWrap, BtnSubmit } from './LoginFom.styled';
+import {
+  WrapLoginForm,
+  WrapForm,
+  InputWrap,
+  InputWrapper,
+  BtnSubmit,
+} from './LoginFom.styled';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'store/auth/operations';
 
@@ -21,10 +27,10 @@ const LoginForm = () => {
 
   return (
     <WrapLoginForm>
-      <form onSubmit={handleLogin}>
+      <WrapForm onSubmit={handleLogin}>
         <InputWrap>
           <label htmlFor="exampleInputEmail">Email</label>
-          <input
+          <InputWrapper
             type="email"
             name="email"
             // value={name}
@@ -34,7 +40,7 @@ const LoginForm = () => {
         </InputWrap>
         <InputWrap>
           <label htmlFor="exampleInputPassword">Password</label>
-          <input
+          <InputWrapper
             type="password"
             name="password"
             // value={password}
@@ -43,7 +49,7 @@ const LoginForm = () => {
           />
         </InputWrap>
         <BtnSubmit type="submit">Login</BtnSubmit>
-      </form>
+      </WrapForm>
     </WrapLoginForm>
   );
 };
