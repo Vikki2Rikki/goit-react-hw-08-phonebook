@@ -12,4 +12,12 @@ export const FilterWrap = styled.div`
 
 export const FilterLabel = styled.label`
   font-weight: 500;
+  margin-left: 450px;
+  margin-bottom: 20px;
+`;
+export const FilterInput = styled.input`
+  display: block;
+  width: 300px;
+  margin-left: 450px;
+  /* margin: 0 auto; */
 `;
