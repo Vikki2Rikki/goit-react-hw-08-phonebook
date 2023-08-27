@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router';
 import { refresh } from 'store/auth/operations';
 import RestrictedRoute from './RestrictedRoute/RestrictedRoute';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,12 @@ export const App = () => {
             <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
           }
         />
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute component={ContactsPage} redirectTo="/login" />
+          }
+        />
       </Route>
       <Route path="*" element={<HomePage />} />
     </Routes>

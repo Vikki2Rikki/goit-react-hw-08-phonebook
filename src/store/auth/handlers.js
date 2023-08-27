@@ -1,15 +1,25 @@
-export const handleSignUpFulfilld = (state, { payload }) => {
+export const handleRegisterLogin = (state, { payload }) => {
+  state.user = payload.user;
   state.token = payload.token;
-  state.profile = payload.user;
+  state.isLoggedIn = true;
 };
-export const handleFulfilld = state => {
-  state.isLoading = false;
+
+export const handleLogOut = state => {
+  state.user = { name: null, email: null };
+  state.token = null;
+  state.isLoggedIn = false;
 };
+
+export const handleRefresh = (state, { payload }) => {
+  state.user = payload;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
+};
+
 export const handlePending = state => {
-  state.isLoading = true;
-  state.error = null;
+  state.isRefreshing = true;
 };
+
 export const handleRejected = (state, { payload }) => {
-  state.isLoading = false;
-  state.error = payload.message;
+  state.isRefreshing = false;
 };

@@ -5,21 +5,47 @@ import {
   Input,
   WrapInput,
 } from './ContactForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts } from 'store/contacts/selectors';
+import { createNewContactThunk } from 'store/contacts/operations';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
 
   const handleInput = ({ target: { name, value } }) => {
     if (name === 'name') setName(value);
-    if (name === 'phone') setPhone(value);
+    if (name === 'number') setNumber(value);
   };
 
-  const addContactHandle = () => {};
+  const addContactHandle = evt => {
+    evt.preventDefault();
+    const createContact = {
+      name: name,
+      number: number,
+    };
+    console.log('createContact', createContact);
+    const isContact = contacts.find(
+      contact => contact.name === createContact.name
+    );
+    !isContact
+      ? dispatch(createNewContactThunk(createContact))
+      : alert(`${createContact.name} is already in contacts.`);
+
+    reset();
+  };
+
+  const reset = () => {
+    setName('');
+    setNumber('');
+  };
 
   return (
     <FormContainer>
-      <form className="form" onClick={evt => evt.preventDefault()}>
+      <form className="form" onSubmit={addContactHandle}>
         <WrapInput>
           <label htmlFor="exampleInputEmail1" className="form-label">
             Name
@@ -40,17 +66,15 @@ const ContactForm = () => {
           </label>
           <Input
             type="tel"
-            name="phone"
-            value={phone}
+            name="number"
+            value={number}
             onChange={handleInput}
             pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
         </WrapInput>
-        <BtnSubmit type="submit" onClick={() => addContactHandle()}>
-          Add contact
-        </BtnSubmit>
+        <BtnSubmit type="submit">Add contact</BtnSubmit>
       </form>
     </FormContainer>
   );

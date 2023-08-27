@@ -31,6 +31,7 @@ export const signUpUser = async credentials => {
 export const loginUser = async credentials => {
   const { data } = await axios.post('/users/login', credentials);
   setAuthHeader(data.token);
+
   return data;
 };
 

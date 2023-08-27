@@ -8,6 +8,7 @@ const RegisterForm = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
+
     const form = evt.currentTarget;
     dispatch(
       register({

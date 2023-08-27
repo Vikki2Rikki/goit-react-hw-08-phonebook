@@ -1,4 +1,4 @@
-import React from 'react';
+//import React from 'react';
 import { WrapLoginForm, InputWrap, BtnSubmit } from './LoginFom.styled';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'store/auth/operations';
@@ -7,16 +7,15 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const handleLogin = evt => {
-    evt.preventDefaulf();
+    evt.preventDefault();
     const form = evt.currentTarget;
-    console.log('post');
+
     dispatch(
       logIn({
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
     );
-    console.log('post');
     form.reset();
   };
 
